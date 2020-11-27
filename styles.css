@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap");
+
+html {
+  font-size: 12px;
+  font-family: "Inconsolata", monospace;
+}
+
+body {
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+
+.loading {
+  margin-top: 20vw;
+  text-align: center;
+  font-size: 2rem;
+}
+
+.container {
+  margin-top: 20vw;
+  text-align: center;
+}
+
+.quote {
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.author {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.quote-btn {
+  font-family: "Inconsolata", monospace;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  font-weight: 300;
+  background-color: #fff;
+  border: 0.5px solid #000;
+}
+
+.quote-btn:hover {
+  background-color: #000;
+  border: 0.5px solid #fff;
+  color: #fff;
+}

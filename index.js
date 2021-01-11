@@ -1,3 +1,12 @@
+// add service worker
+window.onload = () => {
+  "use strict"
+
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("./sw.js")
+  }
+}
+
 let quote = ""
 let author = ""
 const rootElement = document.getElementById("root")

@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@300;400;500&display=swap");
-
-html {
+* {
   font-size: 12px;
   font-family: "Inconsolata", monospace;
 }
@@ -11,13 +9,13 @@ body {
 }
 
 .loading {
-  margin-top: 20vw;
+  margin-top: 30vw;
   text-align: center;
   font-size: 2rem;
 }
 
 .container {
-  margin-top: 20vw;
+  margin-top: 30vw;
   text-align: center;
 }
 

@@ -1,20 +1,47 @@
-var cacheName = "book-app"
-var filesToCache = ["/", "./index.html", "./styles.css", "./index.js"]
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/6.0.2/workbox-sw.js"
+)
 
-/* Start the service worker and cache all of the app's content */
-self.addEventListener("install", function (e) {
-  e.waitUntil(
-    caches.open(cacheName).then(function (cache) {
-      return cache.addAll(filesToCache)
-    })
+const CACHE = "pwabuilder-page"
+
+// TODO: replace the following with the correct offline fallback page i.e.: const offlineFallbackPage = "offline.html";
+const offlineFallbackPages = ["./offline.html", "./styles.css"]
+
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting()
+  }
+})
+
+self.addEventListener("install", async (event) => {
+  event.waitUntil(
+    caches.open(CACHE).then((cache) => cache.addAll(offlineFallbackPages))
   )
 })
 
-/* Serve cached content when offline */
-self.addEventListener("fetch", function (e) {
-  e.respondWith(
-    caches.match(e.request).then(function (response) {
-      return response || fetch(e.request)
-    })
-  )
+if (workbox.navigationPreload.isSupported()) {
+  workbox.navigationPreload.enable()
+}
+
+self.addEventListener("fetch", (event) => {
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      (async () => {
+        try {
+          const preloadResp = await event.preloadResponse
+
+          if (preloadResp) {
+            return preloadResp
+          }
+
+          const networkResp = await fetch(event.request)
+          return networkResp
+        } catch (error) {
+          const cache = await caches.open(CACHE)
+          const cachedResp = await cache.match("./offline.html")
+          return cachedResp
+        }
+      })()
+    )
+  }
 })

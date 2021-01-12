@@ -144,7 +144,10 @@
     />
   </head>
   <body>
-    <div id="root">Loading...</div>
+    <div class="container">
+      <p class="quote">No network connection</p>
+      <p class="author">Please try again later</p>
+    </div>
 
     <script>
       if ("serviceWorker" in navigator) {
@@ -157,7 +160,5 @@
       const el = document.createElement("pwa-update")
       document.body.appendChild(el)
     </script>
-
-    <script type="module" src="index.js"></script>
   </body>
 </html>

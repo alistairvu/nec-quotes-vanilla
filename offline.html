@@ -150,17 +150,5 @@
         <p class="author">Please try again later.</p>
       </div>
     </div>
-
-    <script>
-      if ("serviceWorker" in navigator) {
-        navigator.serviceWorker.register("./sw.js")
-      }
-    </script>
-    <script type="module">
-      import "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate"
-
-      const el = document.createElement("pwa-update")
-      document.body.appendChild(el)
-    </script>
   </body>
 </html>

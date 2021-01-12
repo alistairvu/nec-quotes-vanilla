@@ -3,6 +3,12 @@
   font-family: monospace;
 }
 
+@media (max-width: 480px) {
+  * {
+    font-size: 10px;
+  }
+}
+
 body {
   margin-left: 10vw;
   margin-right: 10vw;
@@ -15,7 +21,7 @@ body {
 }
 
 .container {
-  margin-top: 30vw;
+  margin-top: 20vw;
   text-align: center;
 }
 

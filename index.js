@@ -9,14 +9,15 @@ const getQuotes = async () => {
   `
 
   const res = await fetch(url)
-  const data = await res.json()
+  if (res.ok) {
+    const data = await res.json()
 
-  const length = data.length
-  const randomQuote = data[Math.floor(Math.random() * length)]
+    const length = data.length
+    const randomQuote = data[Math.floor(Math.random() * length)]
 
-  quote = randomQuote.text
-  author = randomQuote.author
-  rootElement.innerHTML = `
+    quote = randomQuote.text
+    author = randomQuote.author
+    rootElement.innerHTML = `
     <div class="container">
       <p class="quote">"${quote}"</p>
       <p class="author">${author !== null ? author : ""}</p>
@@ -25,7 +26,15 @@ const getQuotes = async () => {
       </button>
     </div>
   `
-  document.querySelector(".quote-btn").addEventListener("click", getQuotes)
+    document.querySelector(".quote-btn").addEventListener("click", getQuotes)
+  } else {
+    rootElement.innerHTML = `
+    <div class="container">
+        <p class="quote">No network connection</p>
+        <p class="author">Please try again later</p>
+      </div>
+    `
+  }
 }
 
 getQuotes()

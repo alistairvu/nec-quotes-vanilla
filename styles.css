@@ -15,14 +15,17 @@ body {
 }
 
 .loading {
-  margin-top: 30vw;
   text-align: center;
   font-size: 2rem;
 }
 
 .container {
-  margin-top: 25vw;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .quote {
@@ -38,7 +41,8 @@ body {
 .quote-btn {
   font-family:  monospace;
   font-size: 1.5rem;
-  padding: 0.25rem;
+  width: 25vw;
+  padding: 0.5rem;
   font-weight: 300;
   background-color: #fff;
   border: 0.5px solid #000;
